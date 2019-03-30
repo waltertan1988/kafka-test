@@ -19,11 +19,11 @@ public class CustomPartitioner implements Partitioner {
 		
 		int partitionCount = cluster.partitionCountForTopic(topic);
 		
-		if(key instanceof Integer) {
-			return ((Integer)key) % partitionCount;
+		try {
+			return Integer.parseInt(String.valueOf(key)) % partitionCount;
+		}catch(Exception ex) {
+			return new Random().nextInt(partitionCount);
 		}
-        
-		return new Random().nextInt(partitionCount);
 	}
 
 	@Override
