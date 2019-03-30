@@ -1,4 +1,4 @@
-package com.walter.highlevel.producer;
+package com.walter.producer;
 
 import java.io.IOException;
 import java.util.Properties;

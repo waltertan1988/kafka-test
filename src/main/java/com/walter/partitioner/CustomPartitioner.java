@@ -1,4 +1,4 @@
-package com.walter.highlevel.partitioner;
+package com.walter.partitioner;
 
 import java.util.Map;
 import java.util.Random;

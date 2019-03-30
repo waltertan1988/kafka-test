@@ -1,4 +1,4 @@
-package com.walter.highlevel.consumer;
+package com.walter.consumer;
 
 import java.io.IOException;
 import java.time.Duration;
