@@ -19,3 +19,12 @@ sh ${KAFKA_HOME}/bin/kafka-topics.sh --describe --zookeeper localhost:2181 [--to
 
 * 删除topic：
 sh ${KAFKA_HOME}/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic WalterTopic
+
+* 打开一个控制台生产者：
+sh ${KAFKA_HOME}/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic WalterTopic
+
+* 打开一个控制台消费者：
+sh ${KAFKA_HOME}/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic WalterTopic [--from-beginning]
+或
+sh ${KAFKA_HOME}/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic WalterTopic [--from-beginning]
+
