@@ -10,6 +10,7 @@ import java.util.Properties;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
 
 public class CustomConsumer {
 
@@ -19,12 +20,17 @@ public class CustomConsumer {
 	public static void main(String[] args) throws IOException {
 		Properties props = new Properties();
 		props.load(Class.class.getResourceAsStream(PROPERTIES_FILE));
+		
+		final String APP_TOPIC = props.getProperty("app.topic");
 
 		// 定义consumer
 		KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-
-		// 消费者订阅的topic, 可同时订阅多个
-		consumer.subscribe(Arrays.asList(props.getProperty("app.topic")));
+		
+		// 消费者订阅的topic及partition, 可同时订阅多对
+		consumer.assign(Arrays.asList(new TopicPartition(APP_TOPIC, 0)));
+		
+		// 消费者订阅的topic（会订阅到全部partition）, 可同时订阅多个topic
+		//consumer.subscribe(Arrays.asList(APP_TOPIC));
 
 		List<ConsumerRecord<String, String>> commitBuffer = new ArrayList<>();
 		try {
