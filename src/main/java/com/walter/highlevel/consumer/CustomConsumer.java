@@ -13,7 +13,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 public class CustomConsumer {
 
-	private static final String PROPERTIES_FILE = "/CustomProducer.properties";
+	private static final String PROPERTIES_FILE = "/CustomConsumer.properties";
 	private static final int COMMIT_BATCH_SIZE = 1;
 
 	public static void main(String[] args) throws IOException {
